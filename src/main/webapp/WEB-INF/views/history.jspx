@@ -1,0 +1,12 @@
+<div xmlns:spring="http://www.springframework.org/tags"
+	xmlns:util="urn:jsptagdir:/WEB-INF/tags/util"
+	xmlns:jsp="http://java.sun.com/JSP/Page" version="2.0">
+	<jsp:directive.page contentType="text/html;charset=UTF-8" />
+	<jsp:output omit-xml-declaration="yes" />
+	<util:panel id="title" title="历史日记">
+		<h3>历史日记列表</h3>
+		<p>查询表单</p>
+		<div>日记列表信息</div>
+	</util:panel>
+	<util:pagination page="1" size="20" maxPages="10"></util:pagination>
+</div>

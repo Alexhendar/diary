@@ -1,0 +1,28 @@
+<div xmlns:spring="http://www.springframework.org/tags"
+	xmlns:util="urn:jsptagdir:/WEB-INF/tags/util"
+	xmlns:jsp="http://java.sun.com/JSP/Page" version="2.0">
+	<jsp:directive.page contentType="text/html;charset=UTF-8" />
+	<jsp:output omit-xml-declaration="yes" />
+	<spring:message var="app_name" code="application_name"
+		htmlEscape="false" />
+	<spring:message var="title" code="welcome_titlepane"
+		arguments="${app_name}" htmlEscape="false" />
+	<util:panel id="title" title="${title}">
+		<h3>
+			<spring:message code="welcome_h3" arguments="${app_name}" />
+		</h3>
+		<div>
+			<form id="diaryform" action="${pageContext.request.contextPath}/recordDiary" method="post">
+				<p>
+					<label for="title">日记标题：</label><input type="text" id="title" name="title" size="50"/>
+				</p>
+				<p>
+					<textarea rows="5" cols="80" name="content" id="content">日记</textarea>
+				</p>
+				<p>
+					<input type="submit" value="提交"/><input  type="reset" value="重写"/>
+				</p>
+			</form>
+		</div>
+	</util:panel>
+</div>

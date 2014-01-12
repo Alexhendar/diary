@@ -1,0 +1,11 @@
+// Spring Roo 1.2.2.RELEASE [rev 7d75659] log opened at 2014-01-10 22:08:34
+project --projectName diary --topLevelPackage com.zjy
+jpa setup --provider HIBERNATE --database MYSQL --hostName localhost --userName root --password root --databaseName diary
+hint 
+web mvc setup
+perform eclipse
+// Spring Roo 1.2.2.RELEASE [rev 7d75659] log opened at 2014-01-10 23:57:33
+entity jpa --class ~.domain.Diary
+repository jpa --interface ~.repository.DiaryRepository --entity ~.domain.Diary 
+exit
+// Spring Roo 1.2.2.RELEASE [rev 7d75659] log closed at 2014-01-11 00:01:46

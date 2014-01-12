@@ -1,0 +1,9 @@
+<div id="menu" xmlns:menu="urn:jsptagdir:/WEB-INF/tags/menu"
+	xmlns:jsp="http://java.sun.com/JSP/Page" version="2.0">
+	<jsp:directive.page contentType="text/html;charset=UTF-8" />
+	<jsp:output omit-xml-declaration="yes" />
+	<ul>
+		<li><a href="${pageContext.request.contextPath}/">写日记</a></li>
+		<li><a href="${pageContext.request.contextPath}/history">回忆历史</a></li>
+	</ul>
+</div>
