@@ -19,6 +19,6 @@ public class DiaryController {
 		if(diary != null){
 			diaryService.save(diary);
 		}
-		return "index";
+		return "redirect:/";
 	}
 }

@@ -1,6 +1,17 @@
 <div xmlns:spring="http://www.springframework.org/tags"
 	xmlns:util="urn:jsptagdir:/WEB-INF/tags/util"
 	xmlns:jsp="http://java.sun.com/JSP/Page" version="2.0">
+	<link rel="stylesheet" href="${pageContext.request.contextPath}/js/kindeditor-4.1.10/themes/default/default.css" />
+	<link rel="stylesheet" href="${pageContext.request.contextPath}/js/kindeditor-4.1.10//plugins/code/prettify.css" />
+	<script charset="utf-8" src="${pageContext.request.contextPath}/js/kindeditor-4.1.10//kindeditor.js"><!----></script>
+	<script charset="utf-8" src="${pageContext.request.contextPath}/js/kindeditor-4.1.10//lang/zh_CN.js"><!----></script>
+	<script charset="utf-8" src="${pageContext.request.contextPath}/js/kindeditor-4.1.10//plugins/code/prettify.js"><!----></script>
+	<script type="text/javascript">
+		$(function(){
+			var editor = KindEditor.create('textarea[name="content"]');
+			prettyPrint();
+		});
+	</script>
 	<jsp:directive.page contentType="text/html;charset=UTF-8" />
 	<jsp:output omit-xml-declaration="yes" />
 	<spring:message var="app_name" code="application_name"
@@ -14,10 +25,10 @@
 		<div>
 			<form id="diaryform" action="${pageContext.request.contextPath}/recordDiary" method="post">
 				<p>
-					<label for="title">日记标题：</label><input type="text" id="title" name="title" size="50"/>
+					<label for="title">日记标题：</label><input type="text" id="title" name="title"/>
 				</p>
 				<p>
-					<textarea rows="5" cols="80" name="content" id="content">日记</textarea>
+					<textarea name="content" id="content" style="width:700px;height:400px;"><!--  --></textarea>
 				</p>
 				<p>
 					<input type="submit" value="提交"/><input  type="reset" value="重写"/>
