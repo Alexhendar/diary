@@ -8,14 +8,24 @@
 		<h3>历史日记列表</h3>
 		<p>查询表单</p>
 		<div>
-			<c:forEach items="${page.content}" var="diary">
-			<div>
-				<div id="title">${diary.title}</div>
-				<div id="answerContent">
-					<c:out  value="${diary.content}"></c:out>	
-				</div>
+			<div id="diaryList">
+				<table id="diaryTable">
+					<thead>
+						<tr>
+							<th style="width:60px;">序号</th>
+							<th>标题</th>
+						</tr>
+					</thead>
+					<tbody>
+						<c:forEach items="${page.content}" var="diary" varStatus="s">
+							<tr>
+								<td style="text-align:center;">${s.index + 1 }</td>
+								<td><a href="view/${diary.id}">${diary.title}</a></td>
+							</tr>
+						</c:forEach>
+					</tbody>
+				</table>
 			</div>
-		</c:forEach>
 		</div>
 	</util:panel>
 	<util:pagination page="${page.number}" size="${page.size}" maxPages="${page.totalPages}"></util:pagination>

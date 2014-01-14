@@ -1,10 +1,36 @@
 #diaryform p label{
-	width:80px;
 	margin-top:3px;
+	text-align:left;
+}
+#diaryform p{
+	text-align:right;
 }
 #diaryform p #title{
-	width:500px;
+	width:90%;
 }
-#diaryform p #title{
-	width:615px;
+#diaryTable th{
+	font-family:"Microsoft YAHEI";
+	font-style:normal;
+	text-align:center;
+}
+#diaryTable td{
+	padding-left:5px;
+}
+#diaryTable td a{
+	text-decoration: none;
+	padding: 2px 12px;
+}
+#diaryTable td a:hover {
+	color: #648C1D;
+}
+
+h3 span{
+	float:right;
+}
+
+input{
+	min-width:80px;
+}
+#content{
+	padding:0 10px;
 }

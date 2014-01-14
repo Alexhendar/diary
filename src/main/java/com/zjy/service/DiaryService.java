@@ -25,7 +25,29 @@ import com.zjy.repository.DiaryRepository;
 public class DiaryService {
 	@Autowired
 	private DiaryRepository diaryRepository;
-
+	/**
+	 * 
+	 * \brief findDiaryByID根据ID查看日记 
+	 * @param id
+	 * @return
+	 * @attention 方法的使用注意事项 
+	 * @author zhangjunyong
+	 * @date 2014年1月14日 
+	 * @note  begin modify by 修改人 修改时间   修改内容摘要说明
+	 */
+	public Diary findDiaryByID(Long id){
+		return diaryRepository.findOne(id);
+	}
+	
+	/**
+	 * 
+	 * \brief save 保存日记  
+	 * @param diary
+	 * @attention 方法的使用注意事项 
+	 * @author zhangjunyong
+	 * @date 2014年1月14日 
+	 * @note  begin modify by 修改人 修改时间   修改内容摘要说明
+	 */
 	@Transactional
 	public void save(Diary diary) {
 		diary.setDate(Calendar.getInstance().getTime());
@@ -45,8 +67,6 @@ public class DiaryService {
 	 * @date 2014年1月13日 
 	 */
 	public Page<Diary> listDiaryByPage(final Date startTime,final Date endTime,int start,int size){
-		
-		 
 		return diaryRepository.findAll(new Specification<Diary>() {
 			@Override
 			public Predicate toPredicate(Root<Diary> root, CriteriaQuery<?> query,
