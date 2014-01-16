@@ -35,3 +35,19 @@ input{
 #content{
 	padding:0 10px;
 }
+#searchForm{
+}
+#searchForm ul{
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+
+#searchForm ul li{
+	padding: 0px;
+	width:240px;
+	float:left;
+}
+#diaryList{
+	padding-top:10px;
+}

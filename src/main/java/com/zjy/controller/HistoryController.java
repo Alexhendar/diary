@@ -1,5 +1,7 @@
 package com.zjy.controller;
 
+import java.util.Date;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Controller;
@@ -16,9 +18,18 @@ public class HistoryController {
 	private DiaryService diaryService;
 	
 	@RequestMapping(value="/history",method=RequestMethod.GET)
-	public String history(ModelMap model){
-		Page<Diary> page = diaryService.listDiaryByPage(0, 20);
-		model.addAttribute("page", page);
+	public String history(Integer page,ModelMap model){
+		if(page == null){
+			page = 0;
+		}
+		Page<Diary> pageDiary = diaryService.listDiaryByPage(page, 20);
+		model.addAttribute("page", pageDiary);
+		return "history";
+	}
+	@RequestMapping(value="/history",method=RequestMethod.POST)
+	public String history(Date startDate,Date endDate,ModelMap model){
+		Page<Diary> pageDiary = diaryService.listDiaryByPage(startDate,endDate,0, 20);
+		model.addAttribute("page", pageDiary);
 		return "history";
 	}
 }
