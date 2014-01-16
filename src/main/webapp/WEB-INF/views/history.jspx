@@ -5,6 +5,15 @@
 	<jsp:directive.page contentType="text/html;charset=UTF-8" />
 	<jsp:output omit-xml-declaration="yes" />
 	<script src="${pageContext.request.contextPath}/js/My97DatePicker/WdatePicker.js" type="text/javascript"><!----></script>
+	<script type="text/javascript">
+		$(function(){
+			//alert();
+			var date = new Date();
+			var today = date.getFullYear() + '-' + (date.getMonth() + 1) + '-' + date.getDay();
+			$("#startDate").val(today);
+			$("#endDate").val(today);
+		});
+	</script>
 	<util:panel id="title" title="历史日记">
 		<h3>历史日记列表</h3>
 		<div>
