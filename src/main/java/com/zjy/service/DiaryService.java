@@ -71,9 +71,9 @@ public class DiaryService {
 			@Override
 			public Predicate toPredicate(Root<Diary> root, CriteriaQuery<?> query,
 					CriteriaBuilder cb) {
-				root = query.from(Diary.class);
 				Path<Date> date = root.get("date");
-				return cb.between(date, startTime, endTime);
+				query.where(cb.between(date, startTime, endTime));
+				return null;
 			}
 		},  new PageRequest(start, size, new Sort(Direction.DESC, new String[] { "date" })));
 	}

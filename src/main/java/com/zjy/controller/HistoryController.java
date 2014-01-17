@@ -1,5 +1,7 @@
 package com.zjy.controller;
 
+import java.text.ParseException;
+import java.util.Calendar;
 import java.util.Date;
 
 import javax.servlet.http.HttpServletRequest;
@@ -18,6 +20,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import com.zjy.controller.binder.DateEditor;
 import com.zjy.domain.Diary;
 import com.zjy.service.DiaryService;
+import com.zjy.utils.DateUtils;
 
 @Controller
 public class HistoryController {
@@ -31,6 +34,20 @@ public class HistoryController {
 			page = 0;
 		}
 		Page<Diary> pageDiary = diaryService.listDiaryByPage(page, 20);
+		// 初始化开始时间和结束时间为当前日期
+		String startDate = "";
+		String endDate = startDate;
+		Calendar date =Calendar.getInstance();
+		try {
+			endDate = DateUtils.format(date.getTime(), DateUtils.DateFormat);
+			date.set(Calendar.DATE, date.get(Calendar.DATE) -7);
+			startDate = DateUtils.format(date.getTime(), DateUtils.DateFormat);
+		} catch (ParseException e) {
+			logger.error("日期格式转换错误{}",e);
+		}
+		model.addAttribute("startDate", startDate);
+		model.addAttribute("endDate", endDate);
+		
 		model.addAttribute("page", pageDiary);
 		return "history";
 	}
@@ -40,10 +57,16 @@ public class HistoryController {
 		for(Diary diary:pageDiary.getContent()){
 			logger.info("日记标题是{}", diary.getTitle());
 		}
+		try {
+			model.addAttribute("startDate", DateUtils.format(startDate, DateUtils.DateFormat));
+			model.addAttribute("endDate", DateUtils.format(endDate, DateUtils.DateFormat));
+		} catch (ParseException e) {
+			logger.error("日期格式转换错误{}",e);
+		}
 		model.addAttribute("page", pageDiary);
 		return "history";
 	}
-	@InitBinder  
+	@InitBinder
 	protected void initBinder(HttpServletRequest request,  
 	                              ServletRequestDataBinder binder) throws Exception {  
 	    //对于需要转换为Date类型的属性，使用DateEditor进行处理  

@@ -7,11 +7,6 @@
 	<script src="${pageContext.request.contextPath}/js/My97DatePicker/WdatePicker.js" type="text/javascript"><!----></script>
 	<script type="text/javascript">
 		$(function(){
-			//alert();
-			var date = new Date();
-			var today = date.getFullYear() + '-' + (date.getMonth() + 1) + '-' + date.getDay();
-			$("#startDate").val(today);
-			$("#endDate").val(today);
 		});
 	</script>
 	<util:panel id="title" title="历史日记">
@@ -22,11 +17,11 @@
 					<ul>
 						<li>
 							<label for="startDate">开始日期：</label>
-							<input id="startDate" name="startDate" class="Wdate" type="text" onClick="WdatePicker()"/>		
+							<input id="startDate" name="startDate" class="Wdate" type="text" value="${startDate}" onClick="WdatePicker()"/>		
 						</li>
 						<li>
 							<label for="endDate">结束日期：</label>
-							<input id="endDate" name="endDate" class="Wdate" type="text" onClick="WdatePicker()"/>
+							<input id="endDate" name="endDate" class="Wdate" type="text" value="${endDate}" onClick="WdatePicker()"/>
 						</li>
 						<li>
 							<input type="submit" value="查询"/>
